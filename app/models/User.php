@@ -57,11 +57,18 @@ class User
         //Email param will be binded with the email variable
         $this->db->bind(':email', $email);
 
-        //Check if email is already registered
-        if ($this->db->rowCount() > 0) {
+
+        $row = $this->db->single();
+        if ($row != null) {
             return true;
         } else {
             return false;
         }
+        //Check if email is already registered
+        // if ($this->db->rowCount() > 0) {
+        //     return true;
+        // } else {
+        //     return false;
+        // }
     }
 }
